@@ -25,14 +25,10 @@
 
 <body>
 	<div id="mainDiv">
-		<div id="words">
+		<div class="words">
 			<div id="messages">
 				You've been in the world for
 				<div id="elapseClock"></div>
-			</div>
-			<div id="loveu">
-				May you have a year full of happiness.<br/>
-				<div class="signature">- Mounir</div>
 			</div>
 		</div>
 		<pre><code id="code"><span class="comments">/**</span>
@@ -61,12 +57,17 @@ if( dateString.equals(<span class="string">"2013-08-13 00:00:00"</span>) ){</br>
 }.start()</br>
 <span class="comments">// The last thing I wanna say, boring and ordinary, is:</span>
 System.out.println(<span class="string">"Happy Birthday !"</span>);</code></pre>
-	<p><button onclick="showMyCake()">My CAKE</button></p>
+	<p><button style="display: none;" onclick="showMyCake()">My CAKE</button></p>
+	
+	<div class="words"><div id="loveu">
+		May you have a year full of happiness.<br/>
+		<div class="signature">- Mounir</div>
+	</div></div>
 	</div>
 	<!-- Cake Modal -->
 	<div class="modal">
 		<div class="wrapper">
-			<div class="greeting">Happy Birthday</div>
+			<div class="greeting">Happy Birthday My Friend</div>
 			<div class="plate">
 				<div class="cake-wrap">
 					<div class="cake-topping">
@@ -120,11 +121,11 @@ System.out.println(<span class="string">"Happy Birthday !"</span>);</code></pre>
 	
 	<script type="text/javascript">
 		hljs.highlightElement(document.querySelector('#code'), {language: 'JAVA'});
-		/*$("#code").typewriter(() => {
+		$("#code").typewriter(() => {
 			const btn = $('button');
 			btn.css('display', 'inline-block');
 			btn.typewriter();
-		});*/
+		});
 		new Confettiful(document.querySelector("body"));
 
 		var together = new Date();

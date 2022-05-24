@@ -22,15 +22,11 @@ body {
 	margin-bottom: 10px
 }
 
-#words {
+.words {
 	font-family: "sans-serif";
 	width: 500px;
 	font-size: 24px;
 	color: #666
-}
-
-#messages {
-	display: none
 }
 
 #elapseClock .digit {
@@ -49,6 +45,13 @@ button {
   font-weight: 900;
   min-width: min(75vw, 200px);
   white-space: nowrap;
+}
+
+.signature {
+	margin-top: 10px;
+	font-size: 20px;
+	font-style: italic;
+  text-align: right;
 }
 
 @keyframes confetti-slow {
