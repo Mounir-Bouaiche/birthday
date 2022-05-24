@@ -13,6 +13,18 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  width: 100%;
+}
+
+#mainDiv > * {
+  width: 98vw !important;
+  max-width: 700px !important;
+}
+
+#code {
+  text-align: left;
 }
 
 #elapseClock {
