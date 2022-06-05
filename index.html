@@ -123,6 +123,11 @@ System.out.println(<span class="string">"Happy Birthday !"</span>);</code></pre>
 	<script type="text/javascript">
     const urlParams = getAllUrlParams()
     const dateUtil = moment(urlParams.date, urlParams.format)
+    if (! urlParams.date) {
+      if (urlParams.age) dateUtil.add({year: -urlParams.age})
+      else if (urlParams.year) dateUtil.year(urlParams.year)
+      else dateUtil.year(2000)
+    }
 
     $('.today-str').replaceWith(dateUtil.format("DD[th day of] MMMM"))
     $('.birthday-str').replaceWith(dateUtil.format("DD-MM"))
