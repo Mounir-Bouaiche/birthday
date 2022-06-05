@@ -21,6 +21,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
 	<script type="text/javascript" src="js/functions_dev.js"></script>
+  <script src="js/moment.min.js"></script>
 </head>
 
 <body>
@@ -32,15 +33,15 @@
 			</div>
 		</div>
 		<pre><code id="code"><span class="comments">/**</span>
-<span class="space"/><span class="comments">* Today, the 24th day of May, is your birthday.</span>
+<span class="space"/><span class="comments">* Today, the </span><i class="today-str"></i><span>, is your birthday.</span>
 <span class="space"/><span class="comments">* So I created a page to celebrate this extraordinary day.</span>
 <span class="space"/><span class="comments">*/</span>
-Friend u = Friend.<span class="keyword">lookup</span>(<span class="string">"Abdessalam Ait Omar"</span>);
-<span class="comments">// May 24th, when the bell rang, your age increased </span>
+Friend u = Friend.<span class="keyword">lookup</span>(<span class="string">"<i class="name-str"></i>"</span>);
+<span class="comments">// <i class="today-str"></i>, when the bell rang, your age increased </span>
 Date currentTime = <span class="keyword">new</span> Date(); 
-SimpleDateFormat formatter = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"MM-dd"</span>);
+SimpleDateFormat formatter = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"dd-MM"</span>);
 String dateString = formatter.format(currentTime);
-if(dateString.equals(<span class="string">"05-24"</span>)){</br>
+if(dateString.equals(<span class="string">"<i class="birthday-str"></i>"</span>)){</br>
   u.age ++;</br>
 }</br>
 <span class="comments">// Our blessing will be with you simultaneously.</span>
@@ -120,6 +121,13 @@ System.out.println(<span class="string">"Happy Birthday !"</span>);</code></pre>
 	<script src="js/cake.js"></script>
 	
 	<script type="text/javascript">
+    const urlParams = getAllUrlParams()
+    const dateUtil = moment(urlParams.date, urlParams.format)
+
+    $('.today-str').replaceWith(dateUtil.format("DD[th day of] MMMM"))
+    $('.birthday-str').replaceWith(dateUtil.format("DD-MM"))
+    $('.name-str').replaceWith(capitalize(urlParams.name || 'Self'))
+
 		hljs.highlightElement(document.querySelector('#code'), {language: 'JAVA'});
 		$("#code").typewriter(() => {
 			const btn = $('button');
@@ -128,15 +136,10 @@ System.out.println(<span class="string">"Happy Birthday !"</span>);</code></pre>
 		});
 		new Confettiful(document.querySelector("body"));
 
-		var together = new Date();
-		together.setFullYear(1999, 05, 24);
-		together.setHours(8);
-		together.setMinutes(0);
-		together.setSeconds(0);
-		together.setMilliseconds(0);
+		dateUtil.hours(8);
 
 		setInterval(function () {
-			timeElapse(together);
+			timeElapse(dateUtil);
 		}, 500);
 	</script>
 </body>
